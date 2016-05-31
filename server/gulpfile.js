@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     del = require('del'),
     inject = require('gulp-inject'),
-    event = require('event-stream');
+    event = require('event-stream'),
     jshint = require('gulp-jshint');
 
 //--------------jshint---------------//
@@ -47,4 +47,4 @@ gulp.task('build:prod', ['clean'], function() {
     var cssStream = gulp.src('css/*.css').pipe(gulp.dest('../build/css/'));
     gulp.src(['./**/*.html', '!index.html', '!node_modules/**/*']).pipe(gulp.dest('../build/'));
     gulp.src('index.html').pipe(inject(event.merge(jsStream, cssStream), {ignorePath: '../build/'})).pipe(gulp.dest('../build/'));
-
+});
