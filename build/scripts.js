@@ -35456,7 +35456,7 @@ angular.module('myapp', ['ui.router']).config(function ($stateProvider, $urlRout
     .state('order', {
         url: "/order",
         controller: "OrderCtrl",
-        templateUrl: "partials/order.html"
+        templateUrl: "partials//order.html"
     })
     .state('status', {
         url: "/status/:orderId",
@@ -35469,6 +35469,7 @@ angular.module('myapp', ['ui.router']).config(function ($stateProvider, $urlRout
         templateUrl: "partials/contact.html"
     })
 });
+
 angular.module('myapp').service('basket', function () {
     
     var basket = this;
@@ -35566,14 +35567,4 @@ angular.module('myapp').controller('MainCtrl', function ($scope, factory, basket
             return x.label;
         })).join(', ');
     }
-});
-angular.module('myapp').controller('StatusCtrl', function ($scope, $state, $stateParams, factory) {
-    
-    $scope.orderId = $stateParams.orderId;
-    
-    $scope.orderStatus;
-    
-    factory.getStatus($stateParams.orderId).then( function (res) {
-        $scope.orderStatus = res.data;
-    });
 });
